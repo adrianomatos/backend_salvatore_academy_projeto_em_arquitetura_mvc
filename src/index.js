@@ -1,42 +1,24 @@
-// DOTENV
 require("dotenv").config();
 
-// CRIA APLICAÇÃO USANDO EXPRESS
 const express = require("express");
-const { MongoClient, ObjectId } = require("mongodb");
+//const { MongoClient, ObjectId } = require("mongodb");
 
-// Informações de acesso ao BANCO DE DADOS
-const dbUrl = process.env.DATABASE_URL;
-// Mudando o nome aqui eu crio um banco NOVO no servidor MondoDB Cloud
-const dbName = "mongodb_arquitetura_mvc";
-
-// Função principal MAIN
 async function main() {
-  // Conexão ao Banco de Dados
-  const client = new MongoClient(dbUrl);
-  console.log("Conectando ao Banco de Dados...");
-  await client.connect();
-  console.log("Banco de Dados conectado com sucesso!");
-  const db = client.db(dbName);
-  const collection = db.collection("personagem");
-
+	await connectToDatabase();
+  // const collection = db.collection("personagem");
   const app = express();
+  app.use(express.json());
 
-  // ---------- ---------- ENDPOINT PRINCIPAL
   app.get("/", function (req, res) {
     res.send("Hello World Nodemon!");
   });
 
-  // LISTA
-  // const lista = ["Java", "Android", "Kotlin", "JavaScript"];
-
-  // ---------- ---------- ENDPOINT READ ALL
+  /*
   app.get("/personagens", async function (req, res) {
     const itens = await collection.find().toArray();
     res.send(itens);
   });
 
-  // ---------- ---------- ENDPOINT READ BY ID
   app.get("/personagens/:id", async function (req, res) {
     const id = req.params.id;
     const item = await collection.findOne({ _id: new ObjectId(id) });
@@ -46,11 +28,7 @@ async function main() {
     res.send(item);
   });
 
-  // Sinalisando que express está usando JSON
-  app.use(express.json());
 
-  // ---------- ---------- ENDPOINT CREATE COM POST
-  // /personagens
   app.post("/personagens", async function (req, res) {
     const novoItem = req.body;
     if (!novoItem || !novoItem.nome) {
@@ -63,8 +41,6 @@ async function main() {
     res.status(201).send(novoItem);
   });
 
-  // ---------- ---------- ENDPOINT UPDATE COM PUT
-  // /personagens/id
   app.put("/personagens/:id", async function (req, res) {
     const id = req.params.id;
     // if (!lista[id - 1]) {
@@ -82,8 +58,6 @@ async function main() {
     res.send(novoItem);
   });
 
-  // ---------- ---------- ENDPOINT DELETE
-  // /personagens/id
   app.delete("/personagens/:id", async function (req, res) {
     const id = req.params.id;
     // if (!lista[id - 1]) {
@@ -92,12 +66,11 @@ async function main() {
     await collection.deleteOne({ _id: new ObjectId(id) });
     res.send("Ítem removido com sucesso: " + id);
   });
+*/
 
-  // SERVIDOR OUVINDO
   app.listen(3000, () =>
     console.log("Servidor rodando em http://localhost:3000")
   );
 }
 
-// Executando função principal main
 main();
