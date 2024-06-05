@@ -7,7 +7,8 @@ const { MongoClient, ObjectId } = require("mongodb");
 
 // Informações de acesso ao BANCO DE DADOS
 const dbUrl = process.env.DATABASE_URL;
-const dbName = "mongodb_intro_implementacao";
+// Mudando o nome aqui eu crio um banco NOVO no servidor MondoDB Cloud
+const dbName = "mongodb_arquitetura_mvc";
 
 // Função principal MAIN
 async function main() {
