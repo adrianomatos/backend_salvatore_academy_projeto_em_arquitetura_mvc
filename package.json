@@ -1,8 +1,8 @@
 {
   "name": "backend_salvatore_academy_projeto_em_arquitetura_mvc",
   "version": "1.0.0",
-  "description": "PProjeto da missão de aprendizagem Dev Backend JavaScript iniciante - Organização de Projeto em Arquitetura MVC",
-  "main": "index.js",
+  "description": "Projeto da missão de aprendizagem Dev Backend JavaScript iniciante - Organização de Projeto em Arquitetura MVC",
+  "main": "src/index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
