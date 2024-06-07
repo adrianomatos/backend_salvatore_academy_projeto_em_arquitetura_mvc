@@ -1,22 +1,16 @@
-function getCollection(){
-	return db.collection("personagem");
+const { getDatabase } = require("../db/database-connection");
+
+function getCollection() {
+  return getDatabase().collection("personagem");
 }
 
 function readAll() {
   return getCollection().find().toArray();
 }
-function readById() {
-  
-}
-function create() {
-  
-}
-function updateById() {
-  
-}
-function deleteById() {
-  
-}
+function readById() {}
+function create() {}
+function updateById() {}
+function deleteById() {}
 
 module.exports = {
   readAll,
