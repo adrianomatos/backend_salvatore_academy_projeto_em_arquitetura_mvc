@@ -17,21 +17,6 @@ async function main() {
   app.use("/personagens", personagemRouter);
 
   /*
-  app.get("/personagens", async function (req, res) {
-    const itens = await collection.find().toArray();
-    res.send(itens);
-  });
-
-  app.get("/personagens/:id", async function (req, res) {
-    const id = req.params.id;
-    const item = await collection.findOne({ _id: new ObjectId(id) });
-    if (!item) {
-      return res.status(404).send("ALERTA: Ítem não encontrado");
-    }
-    res.send(item);
-  });
-
-
   app.post("/personagens", async function (req, res) {
     const novoItem = req.body;
     if (!novoItem || !novoItem.nome) {
