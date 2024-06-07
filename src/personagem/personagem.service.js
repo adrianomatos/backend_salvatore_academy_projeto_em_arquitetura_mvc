@@ -1,5 +1,5 @@
-const { ObjectId } = require('mongodb');
-const { getDatabase } = require('../db/database-connection');
+const { ObjectId } = require("mongodb");
+const { getDatabase } = require("../db/database-connection");
 
 function getCollection() {
   return getDatabase().collection("personagem");
@@ -10,18 +10,27 @@ function readAll() {
 }
 
 /**
- * @param {string} id 
- * @returns 
+ * @param {string} id
+ * @returns
  */
 function readById(id) {
   return getCollection().findOne({ _id: new ObjectId(id) });
 }
 
 function create(novoItem) {
-	return getCollection().insertOne(novoItem);
+  return getCollection().insertOne(novoItem);
 }
 
-function updateById() {}
+/**
+ * @param {string} id
+ * @returns
+ */
+async function updateById(id, novoItem) {
+  await getCollection().updateOne(
+    { _id: new ObjectId(id) },
+    { $set: novoItem }
+  );
+}
 
 function deleteById() {}
 
