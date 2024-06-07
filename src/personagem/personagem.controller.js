@@ -14,8 +14,13 @@ async function readById(req, res) {
   res.send(item);
 }
 
-function create(req, res) {
-  res.send("Create");
+async function create(req, res) {
+  const novoItem = req.body;
+  if (!novoItem || !novoItem.nome) {
+    return res.status(400).send("ALERTA: Falta propriedade NOME");
+  }
+  await service.create(novoItem);
+  res.status(201).send(novoItem);
 }
 
 function updateById(req, res) {

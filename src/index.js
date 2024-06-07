@@ -22,35 +22,27 @@ async function main() {
     if (!novoItem || !novoItem.nome) {
       return res.status(400).send("ALERTA: Falta propriedade NOME");
     }
-    // if (lista.includes(novoItem)) {
-    //   return res.status(409).send("ALERTA: Ítem JÁ EXISTE");
-    // }
+
     await collection.insertOne(novoItem);
     res.status(201).send(novoItem);
   });
 
+
   app.put("/personagens/:id", async function (req, res) {
     const id = req.params.id;
-    // if (!lista[id - 1]) {
-    //   return res.status(404).send("ALERTA: Ítem não encontrado");
-    // }
     const novoItem = req.body;
 
     if (!novoItem || !novoItem.nome) {
       return res.status(400).send("ALERTA: Falta propriedade NOME");
     }
-    // if (lista.includes(novoItem)) {
-    //   return res.status(409).send("ALERTA: Ítem JÁ EXISTE");
-    // }
+
     await collection.updateOne({ _id: new ObjectId(id) }, { $set: novoItem });
     res.send(novoItem);
   });
 
+
   app.delete("/personagens/:id", async function (req, res) {
     const id = req.params.id;
-    // if (!lista[id - 1]) {
-    //   return res.status(404).send("ALERTA: Ítem não encontrado");
-    // }
     await collection.deleteOne({ _id: new ObjectId(id) });
     res.send("Ítem removido com sucesso: " + id);
   });
