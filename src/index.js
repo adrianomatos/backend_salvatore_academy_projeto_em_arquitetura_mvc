@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const { connectToDatabase } = require("./db/database-connection");
 const personagemRouter = require("./personagem/personagem.router");
-//const { MongoClient, ObjectId } = require("mongodb");
+// const { MongoClient, ObjectId } = require("mongodb");
 
 async function main() {
   await connectToDatabase();
@@ -14,7 +14,7 @@ async function main() {
     res.send("Hello World Nodemon!");
   });
 
-  app.use("/personagem", personagemRouter);
+  app.use("/personagens", personagemRouter);
 
   /*
   app.get("/personagens", async function (req, res) {
