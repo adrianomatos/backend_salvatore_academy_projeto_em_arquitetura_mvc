@@ -1,19 +1,25 @@
 require("dotenv").config();
 const express = require("express");
 const { connectToDatabase } = require("./db/database-connection");
+
+// Rotas
 const personagemRouter = require("./personagem/personagem.router");
-// const { MongoClient, ObjectId } = require("mongodb");
 
 async function main() {
   await connectToDatabase();
-  // const collection = db.collection("personagem");
+
+  // Express start
   const app = express();
+
+  // Midleware do Express usando JSON no body
   app.use(express.json());
 
+  // Endpoint HOME
   app.get("/", function (req, res) {
-    res.send("Hello World Nodemon!");
+    res.send("Hello World");
   });
 
+  // Router de personagens
   app.use("/personagens", personagemRouter);
 
   app.listen(3000, () =>
