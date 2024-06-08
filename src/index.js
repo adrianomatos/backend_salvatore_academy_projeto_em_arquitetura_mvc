@@ -16,14 +16,6 @@ async function main() {
 
   app.use("/personagens", personagemRouter);
 
-  /*
-  app.delete("/personagens/:id", async function (req, res) {
-    const id = req.params.id;
-    await collection.deleteOne({ _id: new ObjectId(id) });
-    res.send("Ítem removido com sucesso: " + id);
-  });
-*/
-
   app.listen(3000, () =>
     console.log("Servidor rodando em http://localhost:3000")
   );

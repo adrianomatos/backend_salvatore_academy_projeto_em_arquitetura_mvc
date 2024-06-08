@@ -38,8 +38,10 @@ async function updateById(req, res) {
 }
 
 // DELETE DY ID (ÓBVIO)
-function deleteById(req, res) {
-  res.send("Delete By Id");
+async function deleteById(req, res) {
+  const id = req.params.id;
+  await service.deleteById(id);
+  res.send("Ítem removido com sucesso: " + id);
 }
 
 module.exports = {
